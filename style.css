@@ -7,9 +7,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .radius{
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+}
+
+.butcolor{
+    background-color: rgb(216, 231, 236);
+    padding: 10px;
+    border-radius: 30px;
 }
