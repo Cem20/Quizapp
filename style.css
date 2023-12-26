@@ -8,3 +8,8 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.radius{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
