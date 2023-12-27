@@ -96,16 +96,15 @@ function answer(selection){
     let selectedQuestionNumber = selection.slice(-1);
     console.log("selectedQuestionNumber is ", selectedQuestionNumber);
     console.log('Current question is', question['right_answer']);
+
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
+
     if(selectedQuestionNumber == question['right_answer']){
         console.log('hello');
         document.getElementById(selection).parentNode.classList.add('bg-success');
     } else{
         console.log('yo');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
-}
-
-let cem = "2";
-if(cem == 2){
-    console.log(cem);
 }
