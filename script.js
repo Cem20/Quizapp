@@ -66,9 +66,46 @@ function init(){
 
 function showQuestion(){
     let question = questions[currentQuestion];
-    document.getElementById('Question').innerHTML = `${question['question']}`;
-    document.getElementById('answer1').innerHTML = `${question['answer_1']}`;
-    document.getElementById('answer2').innerHTML = `${question['answer_2']}`;
-    document.getElementById('answer3').innerHTML = `${question['answer_3']}`;
-    document.getElementById('answer4').innerHTML = `${question['answer_4']}`;
+    console.log(question['right_answer']);
+
+    document.getElementById('Question').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+/*Own Written Code for Wrong or Right Answers
+function answer(num){
+    let john = document.getElementById(`answer${num}`);
+    let question =  questions[currentQuestion];
+    john.style.transition = 'background-color 0.3s ease';
+   if(num == question['right_answer']){
+    john.style.backgroundColor = '#90ee90';
+    console.log('richtig');
+   }
+   else{
+    john.style.backgroundColor = '#FFCCCB';
+    console.log('falsch')
+   }
+}
+*/ 
+function answer(selection){
+    let question = questions[currentQuestion];
+    console.log('Selected answer is ', selection);
+    let selectedQuestionNumber = selection.slice(-1);
+    console.log("selectedQuestionNumber is ", selectedQuestionNumber);
+    console.log('Current question is', question['right_answer']);
+    if(selectedQuestionNumber == question['right_answer']){
+        console.log('hello');
+        document.getElementById(selection).parentNode.classList.add('bg-success');
+    } else{
+        console.log('yo');
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
+    }
+}
+
+let cem = "2";
+if(cem == 2){
+    console.log(cem);
 }

@@ -17,7 +17,9 @@
       <span class="navbar-brand mb-0 h1">QuizApp</span>
     </div>
   </nav>
-
+  <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="2" aria-valuemin="0" aria-valuemax="10">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 1%"></div>
+  </div>
     <div class="container">
       <div class="card mb-3" style="width: 650px; border-radius: 20px;">
         <div class="row g-0">
@@ -27,23 +29,23 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title" id="Question">Wer hat HTML erfunden?</h5>
-                  <div class="card mb-3" >
-                    <div class="card-body" id="answer1">
+                  <div class="card mb-3 quiz-answer-card" onclick="answer('answer_1')">
+                    <div class="card-body" id="answer_1">
                       This is some text within a card body.
                     </div>
                   </div>
-                  <div class="card mb-3">
-                    <div class="card-body" id="answer2">
+                  <div class="card mb-3 quiz-answer-card" onclick="answer('answer_2')">
+                    <div class="card-body" id="answer_2">
                       This is some text within a card body.
                     </div>
                   </div>
-                  <div class="card mb-3">
-                    <div class="card-body" id="answer3">
+                  <div class="card mb-3 quiz-answer-card" onclick="answer('answer_3')">
+                    <div class="card-body" id="answer_3">
                       This is some text within a card body.
                     </div>
                   </div>
-                  <div class="card">
-                    <div class="card-body" id="answer4">
+                  <div class="card quiz-answer-card" onclick="answer('answer_4')">
+                    <div class="card-body" id="answer_4">
                       This is some text within a card body.
                     </div>
                   </div>
