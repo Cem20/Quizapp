@@ -36,7 +36,7 @@ let questions = [
         "answer_1": "7",
         "answer_2": "8",
         "answer_3": "9",
-        "answer_4": "10",
+        "answer_4": "i0",
         "right_answer": 2,
     },
     {
@@ -65,14 +65,19 @@ function init(){
 }
 
 function showQuestion(){
-    let question = questions[currentQuestion];
-    console.log(question['right_answer']);
 
+    if (currentQuestion >= questions.length) {
+        document.getElementById('endScreen').style = '';
+        document.getElementById('questionBody').style = 'display: none';
+    }else{
+    let question = questions[currentQuestion];
+    
     document.getElementById('Question').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
 
 /*Own Written Code for Wrong or Right Answers
@@ -92,19 +97,29 @@ function answer(num){
 */ 
 function answer(selection){
     let question = questions[currentQuestion];
-    console.log('Selected answer is ', selection);
     let selectedQuestionNumber = selection.slice(-1);
-    console.log("selectedQuestionNumber is ", selectedQuestionNumber);
-    console.log('Current question is', question['right_answer']);
 
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
     if(selectedQuestionNumber == question['right_answer']){
-        console.log('hello');
         document.getElementById(selection).parentNode.classList.add('bg-success');
     } else{
-        console.log('yo');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    }
+    document.getElementById('next-button').disabled = false;
+}
+
+function nextQuestion(){
+    currentQuestion++;
+    resetAnswerButtons();
+    document.getElementById('next-button').disabled = true;
+    showQuestion();
+}
+
+function resetAnswerButtons(){
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-danger');
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-success');
     }
 }
