@@ -60,6 +60,8 @@ let questions = [
 let currentQuestion = 0;
 let cemcinart = 0;
 let currentslide = 1;
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+let AUDIO_FAIL = new Audio('audio/wrong.mp3');
 
 
 function init(){
@@ -69,32 +71,9 @@ function init(){
 function showQuestion(){
 
     if (currentQuestion >= questions.length) {
-        document.getElementById('endScreen').style = '';
-        document.getElementById('score').innerHTML = `
-        <div class="centerEndImg"><img class="endimg" src="./img/brainresult.png"></div>
-        <div class="centerhdr">
-            <h4>COMPLETE</h4>
-            <h4>HTML QUIZ</h4>
-        </div>
-        <div class="centerScore">
-            <h3 class="ys">YOUR SCORE</h3>   
-            <h3>${cemcinart}/${questions.length}</h3>
-        </div>
-        <div class="centerLastButtons">
-            <button type="button"  class="btn btn-primary btn-lg sharebtn" style="width: 200px">Large button</button>
-            <button type="button" onclick="RestartGame()" class="btn btn-primary btn-lg sharebtntwo"  style="color: #183DE8">Replay</button>
-        </div>
-        `;
-        document.getElementById('questionBody').style = 'display: none';
+        showEndScreen();
     }else{
-        
-    let question = questions[currentQuestion];
-    
-    document.getElementById('Question').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+        ShowNextQuestion();
     }
 } 
 
@@ -121,10 +100,12 @@ function answer(selection){
 
     if(selectedQuestionNumber == question['right_answer']){
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        AUDIO_SUCCESS.play();
         cemcinart++;
     } else{
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
 }
@@ -157,4 +138,34 @@ function RestartGame(){
     document.getElementById('questionBody').style = '';
     init();
     nextQuestion();
+}
+
+function showEndScreen(){
+    document.getElementById('endScreen').style = '';
+        document.getElementById('score').innerHTML = `
+        <div class="centerEndImg"><img class="endimg" src="./img/brainresult.png"></div>
+        <div class="centerhdr">
+            <h4>COMPLETE</h4>
+            <h4>HTML QUIZ</h4>
+        </div>
+        <div class="centerScore">
+            <h3 class="ys">YOUR SCORE</h3>   
+            <h3>${cemcinart}/${questions.length}</h3>
+        </div>
+        <div class="centerLastButtons">
+            <button type="button"  class="btn btn-primary btn-lg sharebtn" style="width: 200px">Large button</button>
+            <button type="button" onclick="RestartGame()" class="btn btn-primary btn-lg sharebtntwo"  style="color: #183DE8">Replay</button>
+        </div>
+        `;
+        document.getElementById('questionBody').style = 'display: none';
+}
+
+function ShowNextQuestion(){
+    let question = questions[currentQuestion];
+    
+    document.getElementById('Question').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
