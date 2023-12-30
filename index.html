@@ -17,8 +17,8 @@
       <span class="navbar-brand mb-0 h1">QuizApp</span>
     </div>
   </nav>
-  <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="2" aria-valuemin="0" aria-valuemax="10">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 1%"></div>
+  <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" id="yo" style="width: 0%">25%</div>
   </div>
     <div class="container">
       <div class="card mb-3" style="width: 650px; border-radius: 20px;">
@@ -28,7 +28,10 @@
           </div>
           <div class="col-md-8">
             <div class="card-body" id="endScreen" style="display: none;">
-              Quiz beendet!
+             
+              <div id="score">
+              </div>
+              <button type="button" onclick="RestartGame()" class="btn btn-primary btn-lg sharebtntwo"  style="color: #183DE8">Replay</button>
             </div>
             <div  class="card-body" id="questionBody">
               <h5 class="card-title" id="Question">Wer hat HTML erfunden?</h5>

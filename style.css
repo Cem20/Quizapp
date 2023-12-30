@@ -29,3 +29,60 @@ body{
 .bg-success, .bg-danger {
     color: white !important;
 }
+
+.sharebtn{
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    background-color: #183DE8 !important;
+}
+
+.sharebtntwo{
+    background-color: unset !important;
+    border: none !important;
+    font-weight: 500;
+}
+
+.endimg{
+    height: 129px;
+}
+
+.centerEndImg{
+    display: flex;
+    justify-content: center;
+}
+
+.centerhdr{
+    margin-top: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3{
+    font-size: 20px !important;
+    font-weight: 800 !important;
+}
+
+h4{
+    font-weight: 900 !important;
+    margin: 0 !important;
+}
+
+.centerScore{
+    margin-top: 13px !important;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.centerLastButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ys{
+    color: #ED8B3E;
+}

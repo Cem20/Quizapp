@@ -58,6 +58,8 @@ let questions = [
 ];
 
 let currentQuestion = 0;
+let cemcinart = 0;
+let currentslide = 1;
 
 
 function init(){
@@ -68,8 +70,24 @@ function showQuestion(){
 
     if (currentQuestion >= questions.length) {
         document.getElementById('endScreen').style = '';
+        document.getElementById('score').innerHTML = `
+        <div class="centerEndImg"><img class="endimg" src="./img/brainresult.png"></div>
+        <div class="centerhdr">
+            <h4>COMPLETE</h4>
+            <h4>HTML QUIZ</h4>
+        </div>
+        <div class="centerScore">
+            <h3 class="ys">YOUR SCORE</h3>   
+            <h3>${cemcinart}/${questions.length}</h3>
+        </div>
+        <div class="centerLastButtons">
+            <button type="button"  class="btn btn-primary btn-lg sharebtn" style="width: 200px">Large button</button>
+            <button type="button" onclick="RestartGame()" class="btn btn-primary btn-lg sharebtntwo"  style="color: #183DE8">Replay</button>
+        </div>
+        `;
         document.getElementById('questionBody').style = 'display: none';
     }else{
+        
     let question = questions[currentQuestion];
     
     document.getElementById('Question').innerHTML = question['question'];
@@ -78,7 +96,7 @@ function showQuestion(){
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
     }
-}
+} 
 
 /*Own Written Code for Wrong or Right Answers
 function answer(num){
@@ -103,6 +121,7 @@ function answer(selection){
 
     if(selectedQuestionNumber == question['right_answer']){
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        cemcinart++;
     } else{
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
@@ -111,6 +130,10 @@ function answer(selection){
 }
 
 function nextQuestion(){
+    let newp = Math.round((currentslide / questions.length) * 100);
+    document.getElementById('yo').style = `width: ${newp}%`;
+    document.getElementById('yo').innerHTML = `${newp}%`;
+    currentslide++;
     currentQuestion++;
     resetAnswerButtons();
     document.getElementById('next-button').disabled = true;
@@ -122,4 +145,16 @@ function resetAnswerButtons(){
         document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-danger');
         document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-success');
     }
+}
+
+
+
+function RestartGame(){
+    currentQuestion = 0;
+    cemcinart = 0;
+    currentslide = 0;
+    document.getElementById('endScreen').style = 'display: none';
+    document.getElementById('questionBody').style = '';
+    init();
+    nextQuestion();
 }
